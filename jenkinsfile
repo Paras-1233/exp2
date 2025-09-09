@@ -2,14 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('clone') {
             steps {
-                echo 'Hello World'
+                git branch: 'main', credentialsId: 'e7f4b254-cf2d-42e9-9db0-372fd1e5cd13', url: 'https://github.com/Paras-1233/exp2.git'
             }
         }
-        stage('welcome') {
+        stage('Compile') {
             steps {
-                echo 'Welcome'
+            bat 'java helloworld.javac'
+            }
+        }
+        stage('Run') {
+            steps {
+            bat 'java helloworld'
             }
         }
        
